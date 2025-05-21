@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiveTime - 재능 기부 플랫폼</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f8f8f8;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+      .nav-left {
+        display: flex;
+        flex: 1;
+      }
+      .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+      }
+      .nav-right {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+      }
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+      .main-banner {
+        overflow: hidden;
+        width: 100%;
+        min-height: 400px;
+      }
+      .slide-wrapper {
+        display: flex;
+        transition: transform 1s ease-in-out;
+      }
+      .slide {
+        display: flex;
+        flex: 0 0 100%;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        height: 400px;
+        background-color: #e8f6ff;
+      }
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+
+        50% {
+          transform: translateX(-300%);
+        }
+
+        100% {
+          transform: translateX(-600%);
+        }
+      }
+
+      .slide .text {
+        flex: none;
+        width: 50%;
+        padding-left: 40px;
+      }
+      .slide .text h1 {
+        margin: 0;
+        font-size: 2em;
+      }
+      .slide .text p {
+        margin: 10px 0;
+        font-size: 1.1em;
+      }
+      .slide .image {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+      }
+      .slide .image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+      }
+      section {
+        padding: 40px;
+      }
+      .section-title {
+        font-size: 2.9em;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .section-subtitle {
+        font-size: 1em;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-top: -30px;
+        color: #555;
+      }
+      .card-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: stretch;
+      }
+      .card {
+        background-color: white;
+        width: 280px;
+        border-radius: 24px;
+
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 8px 12px;
+        border-bottom: 1px solid #ddd;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+      }
+
+      .category-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .category-info {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.9em;
+        color: #333;
+      }
+
+      .category-name {
+        font-weight: bold;
+      }
+
+      .card-body1 {
+        background-color: #e0e0e0;
+        padding: 20px;
+        line-height: 1.6;
+        font-size: 0.95em;
+        color: #222;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        flex: 1;
+      }
+      .card-body2 {
+        background-color: pink;
+        padding: 20px;
+        line-height: 1.6;
+        font-size: 0.95em;
+        color: #222;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        flex: 1;
+      }
+
+      .title {
+        font-weight: bold;
+        font-size: 1em;
+        margin-bottom: 10px;
+        text-align: text-align;
+      }
+
+      .detail-link {
+        text-align: right;
+        margin-top: 10px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .category-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+      }
+
+      .card-body .title {
+        font-weight: bold;
+        font-size: 1.05em;
+      }
+
+      .card.pink {
+        background-color: #ffe6e6;
+      }
+      .warm-section {
+        background-image: url("images/flower.jpeg"); /* 벚꽃 이미지 경로 */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 60px 20px; /* 내부 여백 */
+        border-radius: 20px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9em;
+        color: black;
+        background-color: transparent; /* 배경색 제거 */
+
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-left">
+        <div
+          class="logo"
+          style="
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 1.5em;
+          "
+        >
+          Give Time
+        </div>
+      </div>
+      <div class="nav-center">
+        <nav>
+          <a href="#">공지사항</a>
+          <a href="#">재능기부</a>
+          <a href="#">재능요청</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <nav>
+          <a href="#"><span style="font-size: 1.2em">👜</span> 로그인</a>
+          <a href="#"><span style="font-size: 1.2em">⭐</span> 회원가입</a>
+          <a href="#"><span style="font-size: 1.2em">⭐</span> 마이페이지</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-banner">
+      <div class="slide-wrapper" id="slideWrapper">
+        <div class="slide">
+          <div class="text">
+            <h1>재능 기부 플랫폼</h1>
+            <p>
+              당신의 시간, 능력이 모이면 힘이 됩니다.<br />GiveTime은 시간으로
+              마음을 나누는 재능 기부 플랫폼입니다.
+            </p>
+            <p>✔️ 전문 / 시간 선택 가능</p>
+          </div>
+          <div class="image">
+            <img
+              src="images/givetalent.png"
+              alt="재능기부 이미지"
+            />
+          </div>
+        </div>
+        <div class="slide">
+          <div class="text">
+            <h1>함께 만드는 따뜻한 세상</h1>
+            <p>
+              여러분의 작은 나눔이 큰 변화를 만듭니다.<br />함께 나누는 삶을
+              GiveTime에서 시작하세요.
+            </p>
+            <p>✔️ 누구나 쉽게 참여 가능</p>
+          </div>
+          <div class="image">
+            <img src="images/warm-world.png" alt="함께 기부 이미지" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">모집중인 재능기부</div>
+      <p class="section-subtitle">당신의 재능을 세상과 나눠보세요</p>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북고등학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">html 학습 보조</div>
+            <div>활동 기간 : 2025.04.16</div>
+            <div>모집 인원 : 5명</div>
+            <div>모집 기간 : ~2025.04.10</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북초등학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">스크래치 학습 보조</div>
+            <div>활동 기간 : 2025. 04. 20</div>
+            <div>모집 인원 : 3명</div>
+            <div>모집 기간 : ~2025.04.13</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/art.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">서울시, 그앤비미술학원</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">크러키 학습 보조</div>
+            <div>활동 기간 : 2025. 05. 10</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.08</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/english.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">외국어</div>
+              <div class="category-location">인천광역시, 인천중학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">영어 회화 보조</div>
+            <div>활동 기간 : 2025. 05. 18</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.15</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="warm-section">
+      <div class="section-title">따뜻한 이야기</div>
+      <p class="section-subtitle">
+        작지만 깊은 나눔이 만들어낸 순간들을 담았어요
+      </p>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북고등학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">html 학습 보조</div>
+            <div>활동 기간 : 2025.04.16</div>
+            <div>모집 인원 : 5명</div>
+            <div>모집 기간 : ~2025.04.10</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북초등학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">스크래치 학습 보조</div>
+            <div>활동 기간 : 2025. 04. 20</div>
+            <div>모집 인원 : 3명</div>
+            <div>모집 기간 : ~2025.04.13</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/art.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">서울시, 그앤비미술학원</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">크러키 학습 보조</div>
+            <div>활동 기간 : 2025. 05. 10</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.08</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/english.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">외국어</div>
+              <div class="category-location">인천광역시, 인천중학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">영어 회화 보조</div>
+            <div>활동 기간 : 2025. 05. 18</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.15</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        © 2025 AI프로젝트 박성범 박영현 윤준식<br />
+        찾아오시는 길: 충북대학교 S4-103호
+      </footer>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const wrapper = document.getElementById("slideWrapper");
+        const slides = Array.from(wrapper.children);
+        const slideCount = slides.length;
+
+        // ✅ 첫 슬라이드 복제 후 맨 뒤에 붙임
+        const firstClone = slides[0].cloneNode(true);
+        wrapper.appendChild(firstClone);
+
+        let index = 0;
+
+        setInterval(() => {
+          index++;
+          wrapper.style.transition = "transform 1s ease-in-out";
+          wrapper.style.transform = `translateX(-${index * 100}%)`;
+
+          if (index === slideCount) {
+            // 마지막 복제 슬라이드에 도달했을 때
+            setTimeout(() => {
+              wrapper.style.transition = "none"; // transition 끄고
+              wrapper.style.transform = "translateX(0%)"; // 진짜 1번으로 순간이동
+              index = 0; // 인덱스 초기화
+            }, 1000); // transition 시간과 동일하게
+          }
+        }, 4000);
+      });
+    </script>
+  </body>
+</html>
