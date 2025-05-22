@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiveTime - 재능 기부 플랫폼</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav-left">
+        <div
+          class="logo"
+          style="
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 1.5em;
+          "
+        >
+          <a href="main.html" style="text-decoration: none; color: inherit"
+            >Give Time</a
+          >
+        </div>
+      </div>
+      <div class="nav-center">
+        <nav>
+          <a href="#">공지사항</a>
+          <a href="talent-donation.html">재능기부</a>
+          <a href="talent-request.html">재능요청</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <nav>
+          <a href="#" onclick="openLoginModal()"
+            ><span style="font-size: 1.2em">👜</span> 로그인</a
+          >
+          <a href="#" onclick="openSignupModal()"
+            ><span style="font-size: 1.2em">⭐</span> 회원가입</a
+          >
+          <a href="#"><span style="font-size: 1.2em">⭐</span> 마이페이지</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-banner">
+      <div class="slide-wrapper" id="slideWrapper">
+        <div class="slide">
+          <div class="text">
+            <h1>재능 기부 플랫폼</h1>
+            <p>
+              당신의 시간, 능력이 모이면 힘이 됩니다.<br />GiveTime은 시간으로
+              마음을 나누는 재능 기부 플랫폼입니다.
+            </p>
+            <p>✔️ 전문 / 시간 선택 가능</p>
+          </div>
+          <div class="image">
+            <img src="images/givetalent.png" alt="재능기부 이미지" />
+          </div>
+        </div>
+        <div class="slide">
+          <div class="text">
+            <h1>함께 만드는 따뜻한 세상</h1>
+            <p>
+              여러분의 작은 나눔이 큰 변화를 만듭니다.<br />함께 나누는 삶을
+              GiveTime에서 시작하세요.
+            </p>
+            <p>✔️ 누구나 쉽게 참여 가능</p>
+          </div>
+          <div class="image">
+            <img src="images/warm-world.png" alt="함께 기부 이미지" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">모집중인 재능기부</div>
+      <p class="section-subtitle">당신의 재능을 세상과 나눠보세요</p>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북고등학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">html 학습 보조</div>
+            <div>활동 기간 : 2025.04.16</div>
+            <div>모집 인원 : 5명</div>
+            <div>모집 기간 : ~2025.04.10</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북초등학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">스크래치 학습 보조</div>
+            <div>활동 기간 : 2025. 04. 20</div>
+            <div>모집 인원 : 3명</div>
+            <div>모집 기간 : ~2025.04.13</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/art.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">서울시, 그앤비미술학원</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">크러키 학습 보조</div>
+            <div>활동 기간 : 2025. 05. 10</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.08</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/english.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">외국어</div>
+              <div class="category-location">인천광역시, 인천중학교</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">영어 회화 보조</div>
+            <div>활동 기간 : 2025. 05. 18</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.15</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="warm-section">
+      <div class="section-title">따뜻한 이야기</div>
+      <p class="section-subtitle">
+        작지만 깊은 나눔이 만들어낸 순간들을 담았어요
+      </p>
+      <div class="card-list">
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북고등학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">html 학습 보조</div>
+            <div>활동 기간 : 2025.04.16</div>
+            <div>모집 인원 : 5명</div>
+            <div>모집 기간 : ~2025.04.10</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/computer.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">청주시, 충북초등학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">스크래치 학습 보조</div>
+            <div>활동 기간 : 2025. 04. 20</div>
+            <div>모집 인원 : 3명</div>
+            <div>모집 기간 : ~2025.04.13</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/art.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">IT</div>
+              <div class="category-location">서울시, 그앤비미술학원</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">크러키 학습 보조</div>
+            <div>활동 기간 : 2025. 05. 10</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.08</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <img
+              src="images/english.png"
+              alt="카테고리 이미지"
+              class="category-img"
+            />
+            <div class="category-info">
+              <div class="category-name">외국어</div>
+              <div class="category-location">인천광역시, 인천중학교</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">영어 회화 보조</div>
+            <div>활동 기간 : 2025. 05. 18</div>
+            <div>모집 인원 : 2명</div>
+            <div>모집 기간 : ~2025.05.15</div>
+            <div class="detail-link">상세보기</div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        © 2025 AI프로젝트 박성범 박영현 윤준식<br />
+        찾아오시는 길: 충북대학교 S4-103호
+      </footer>
+    </section>
+
+    <script src="scripts/main.js"></script>
+    <div id="loginModal" class="modal-overlay" style="display: none">
+      <div class="login-modal">
+        <div class="welcome-header">
+          <img src="images/givetime.png" alt="GiveTime" class="logo-img" />
+          <div class="welcome-text">
+            <div class="brand-name">GIVE TIME 에 오신 것을</div>
+            <span class="highlight">환영합니다!</span>
+          </div>
+        </div>
+
+        <button class="google-btn">
+          <img src="images/google.png" class="google-icon" alt="Google" />
+          구글계정으로 로그인하기
+        </button>
+
+        <div class="divider">OR</div>
+        <!-- ✅ 이메일 입력 -->
+        <div class="input-box">
+          <img src="images/email.png" class="input-icon" />
+          <input type="email" placeholder="example@gmail.com" />
+        </div>
+
+        <!-- ✅ 비밀번호 입력 + 눈 아이콘 -->
+        <div class="input-box">
+          <img src="images/key.png" class="input-icon" />
+          <input type="password" id="password" placeholder="비밀번호 입력" />
+          <button class="toggle-password" onclick="togglePassword()">👁️</button>
+        </div>
+
+        <!-- ✅ 옵션 -->
+        <div class="options-row">
+          <label><input type="checkbox" /> 사용자 이름 기억</label>
+          <a href="#">비밀번호를 잊어버리셨나요?</a>
+        </div>
+
+        <!-- ✅ 로그인 버튼 -->
+        <button class="login-btn">로그인</button>
+        <p class="signup-text">계정이 없으신가요? <a href="#">회원가입</a></p>
+
+        <!-- 닫기 버튼 -->
+        <button onclick="closeLoginModal()" class="close-btn">X</button>
+      </div>
+    </div>
+
+    <div id="signupModal" class="modal-overlay" style="display: none">
+      <div class="signup-modal">
+        <button onclick="closeSignupModal()" class="close-btn">X</button>
+        <div class="welcome-header">
+          <img src="images/givetime.png" class="logo-img" alt="GiveTime" />
+          <div class="welcome-text">
+            <div class="brand-name">GIVE TIME 에 오신 것을</div>
+            <div class="highlight">환영합니다!</div>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <img src="images/email.png" class="input-icon" />
+          <input type="email" placeholder="example@gmail.com" />
+        </div>
+
+        <div class="input-box">
+          <img src="images/key.png" class="input-icon" />
+          <input type="password" id="password" placeholder="비밀번호" />
+          <button class="toggle-password" onclick="togglePassword()">👁️</button>
+        </div>
+
+        <div class="input-box">
+          <img src="images/key.png" class="input-icon" />
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="비밀번호 확인"
+          />
+          <button class="toggle-password" onclick="toggleConfirmPassword()">
+            👁️
+          </button>
+        </div>
+
+        <div class="input-box">
+          <img src="images/location.png" class="input-icon" />
+          <input
+            type="text"
+            placeholder="충청북도 청주시 서원구 충대로 1 S4-103호"
+          />
+        </div>
+
+        <button class="signup-btn">회원가입</button>
+      </div>
+    </div>
+  </body>
+</html>
