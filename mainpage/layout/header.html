@@ -1,0 +1,61 @@
+<header>
+    <div class="nav-left">
+        <style>
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+                background-color: white;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .nav-left {
+                display: flex;
+                flex: 1;
+            }
+
+            .nav-center {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+            }
+
+            .nav-right {
+                display: flex;
+                justify-content: flex-end;
+                flex: 1;
+            }
+
+            nav a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+        </style>
+        <div class="logo" style="
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 1.5em;
+          ">
+            <a href="main.html" style="text-decoration: none; color: inherit">Give Time</a>
+        </div>
+    </div>
+    <div class="nav-center">
+        <nav>
+            <a href="#">공지사항</a>
+            <a href="talent-donation.html">재능기부</a>
+            <a href="talent-request.html">재능요청</a>
+        </nav>
+    </div>
+    <div class="nav-right">
+        <nav>
+            <a href="#" onclick="openLoginModal()"><span style="font-size: 1.2em">👜</span> 로그인</a>
+            <a href="#" onclick="openSignupModal()"><span style="font-size: 1.2em">⭐</span> 회원가입</a>
+            <a href="mypage.html"><span style="font-size: 1.2em">⭐</span> 마이페이지</a> <!--일단은 연결만 해둠.-->
+        </nav>
+    </div>
+</header>
