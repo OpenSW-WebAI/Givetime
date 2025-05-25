@@ -5,42 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GiveTime - 재능 기부 플랫폼</title>
     <link rel="stylesheet" href="styles/main.css" />
+    <script src="scripts/layout.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="nav-left">
-        <div
-          class="logo"
-          style="
-            font-family: 'Georgia', serif;
-            font-weight: bold;
-            font-size: 1.5em;
-          "
-        >
-          <a href="main.html" style="text-decoration: none; color: inherit"
-            >Give Time</a
-          >
-        </div>
-      </div>
-      <div class="nav-center">
-        <nav>
-          <a href="#">공지사항</a>
-          <a href="talent-donation.html">재능기부</a>
-          <a href="talent-request.html">재능요청</a>
-        </nav>
-      </div>
-      <div class="nav-right">
-        <nav>
-          <a href="#" onclick="openLoginModal()"
-            ><span style="font-size: 1.2em">👜</span> 로그인</a
-          >
-          <a href="#" onclick="openSignupModal()"
-            ><span style="font-size: 1.2em">⭐</span> 회원가입</a
-          >
-          <a href="mypage.html"><span style="font-size: 1.2em">⭐</span> 마이페이지</a> <!--일단은 연결만 해둠.-->
-        </nav>
-      </div>
-    </header>
+    <div id="header"></div>
 
     <div class="main-banner">
       <div class="slide-wrapper" id="slideWrapper">
@@ -247,10 +215,7 @@
           </div>
         </div>
       </div>
-      <footer>
-        © 2025 AI프로젝트 박성범 박영현 윤준식<br />
-        찾아오시는 길: 충북대학교 S4-103호
-      </footer>
+      <div id="footer"></div>
     </section>
 
     <script src="scripts/main.js"></script>
