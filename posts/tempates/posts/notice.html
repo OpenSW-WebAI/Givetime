@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재능 기부</title>
+    <script src="scripts/layout.js" defer></script>
+    <script src="scripts/notice.js" defer></script>
+    <link rel="stylesheet" href="styles/borad.css">
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div class="container">
+      <div class="main">
+        <h1>재능 기부</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="검색어를 입력하세요..." />
+          <button>검색</button>
+        </div>
+
+        <!-- 여기에 JS로 게시글 카드가 들어갈 것 -->
+        <div id="card-container"></div>
+
+        <div class="pagination">
+          <span class="active">1</span>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">...</a>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-title">📊 인기글(조회수 기반)</div>
+        <!-- 여기도 JS로 인기글 추가 -->
+        <div id="sidebar-container"></div>
+      </aside>
+    </div>
+
+    <div id="footer"></div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재능 요청</title>
+    <script src="scripts/layout.js" defer></script>
+    <link rel="stylesheet" href="styles/borad.css">
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div class="container">
+      <div class="main">
+        <h1>재능 요청</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="검색어를 입력하세요..." />
+          <button>검색</button>
+        </div>
+
+        <!-- 게시글 카드들 -->
+        <div class="card">
+          <div class="card-title">인기글 제목</div>
+          <div class="card-meta">
+            <div class="card-sub">작성자: 박영현</div>
+            <span class="date">2025-05-22</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">인기글 제목</div>
+          <div class="card-meta">
+            <div class="card-sub">작성자: 박성범</div>
+            <span class="date">2025-05-21</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">인기글 제목</div>
+          <div class="card-meta">
+            <div class="card-sub">작성자: 윤준식</div>
+            <span class="date">2025-05-20</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">인기글 제목</div>
+          <div class="card-meta">
+            <div class="card-sub">작성자: 김철수</div>
+            <span class="date">2025-05-20</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">인기글 제목</div>
+          <div class="card-meta">
+            <div class="card-sub">작성자: 김유리</div>
+            <span class="date">2025-05-20</span>
+          </div>
+        </div>
+
+        <!-- ... 생략 가능 -->
+
+        <div class="pagination">
+          <span class="active">1</span>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">...</a>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-title">📊 인기글(조회수 기반)</div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">제목: 충북초등학교 재능기부 후기</div>
+          <div class="sidebar-card-content">내용: 너무 친절합니다</div>
+          <div class="sidebar-card-meta">
+            <div class="author-info">
+              <span class="author">김무개</span>
+            </div>
+            <span class="date">2025.05.15</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">제목: 인천외국어고등학교 재능기부 후기</div>
+          <div class="sidebar-card-content">내용: 전문적인 영어 선생님</div>
+          <div class="sidebar-card-meta">
+            <div class="author">
+              <span class="author-name">김개무</span>
+            </div>
+            <span class="date">2025.05.13</span>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">제목: 충북외국어고등학교 재능기부 후기</div>
+          <div class="sidebar-card-content">내용: 전문적인 수학 선생님</div>
+          <div class="sidebar-card-meta">
+            <div class="author">
+              <span class="author-name">김마야</span>
+            </div>
+            <span class="date">2025.05.10</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>
