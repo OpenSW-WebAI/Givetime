@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공지사항</title>
+
+    <link rel="stylesheet" href="{% static 'posts/board.css' %}" />
+  </head>
+  <body>
+    <div id="header">{% include 'main/header.html' %}</div>
+
+    <div class="container">
+      <div class="main">
+        <h1>공지사항</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="검색어를 입력하세요..." />
+          <button>검색</button>
+        </div>
+
+        {% for post in page_obj %}
+        <div class="card">
+          <a href="{% url 'announcement_detail' post.id %}">
+            <div class="card-title">{{ post.title }}</div>
+          </a>
+          <div class="card-meta">
+            <div class="card-sub">작성자: {{ post.author.username }}</div>
+            <span class="date">{{ post.created_at|date:"Y-m-d" }}</span>
+            <span>조회수: {{ post.views }}</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>등록된 공지사항이 없습니다.</p>
+        {% endfor %}
+
+        {% if user.is_superuser %}
+        <a href="/posts/announcement/create/">[+] 글 작성</a>
+        {% endif %}
+
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <span class="active">{{ num }}</span>
+            {% else %}
+              <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">다음</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-title">📢 인기 공지사항</div>
+
+        {% for post in popular_posts %}
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">
+            <a href="{% url 'announcement_detail' post.id %}">{{ post.title }}</a>
+          </div>
+          <div class="sidebar-card-meta">
+            <div class="author-info">
+              <span class="author">{{ post.author.username }}</span>
+            </div>
+            <span class="date">{{ post.created_at|date:"Y-m-d" }}</span>
+            <span>조회수: {{ post.views }}</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>인기글이 없습니다.</p>
+        {% endfor %}
+      </aside>
+    </div>
+
+    <div id="footer">{% include 'main/footer.html' %}</div>
+  </body>
+</html>

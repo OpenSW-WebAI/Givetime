@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지 | Give Time</title>
+    <link rel="stylesheet" href="styles/mypage.css">
+    <script src="scripts/layout.js" defer></script>
+    <script src="scripts/mypage.js" defer></script>
+</head>
+<body>
+
+    <div id="header"></div> <!-- 레이아웃 js 사용해서 만듬-->
+
+    <main class="profile-card">
+        <div class="profile-header">
+            <img src="/images/profile.jpg" alt="프로필 이미지" class="profile-img" id="profile-img">
+        </div>
+
+        <div class="profile-info">
+            <h2 id="username">invild username</h2>
+            <p id="title">loading..</p>
+            <p><span id="location"></span> · <span id="email"></span></p>
+            <div class="badges">
+            </div>
+        </div>
+
+        <section class="about-section">
+            <h3>About</h3>
+            <p class="about-text" id="about"></p>
+        </section>
+
+        <section class="skills-box">
+            <h3>주요 기술 및 역량</h3>
+            <ul id="skills-list"></ul>
+        </section>
+
+        <section class="services-section">
+            <h3>Services</h3>
+            <ul id="services-list"></ul>
+            <button>Request services</button>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+</body>
+</html>
