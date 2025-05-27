@@ -1,0 +1,449 @@
+{% load static %}
+<header>
+  <div class="nav-left">
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .nav-left {
+        display: flex;
+        flex: 1;
+      }
+
+      .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-right {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+      }
+
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+      footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9em;
+        color: black;
+        background-color: transparent; /* 배경색 제거 */
+
+        margin-top: 40px;
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      .login-modal {
+        background: white;
+        width: 400px;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+        position: relative;
+      }
+      .login-header h2 {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+      }
+      .google-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        background: #fff;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      .divider {
+        margin: 20px 0;
+        font-size: 0.9em;
+        color: #888;
+      }
+      .login-form input {
+        width: 100%;
+        margin: 5px 0 15px;
+        padding: 10px;
+        font-size: 0.95em;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      .login-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85em;
+      }
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        cursor: pointer;
+        color: #333;
+        z-index: 9999;
+      }
+      .logo-img {
+        max-width: 150px; /* 필요시 더 줄여도 됨 */
+        height: auto;
+        margin-bottom: 20px;
+      }
+      /* 로고 + 텍스트 */
+      .welcome-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
+      .logo-img {
+        width: 60px;
+        height: auto;
+      }
+      .welcome-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        line-height: 1.4;
+      }
+      .brand-name {
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      .highlight {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #d32f2f;
+      }
+
+      /* 구글 버튼 */
+      .google-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: white;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        justify-content: center;
+      }
+      .google-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* 입력창 구조 */
+      .input-box {
+        display: flex;
+        align-items: center;
+        background: #eee;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px 0;
+        position: relative;
+      }
+      .input-box input {
+        border: none;
+        background: transparent;
+        flex: 1;
+        padding-left: 10px;
+        font-size: 1em;
+      }
+      .input-icon {
+        width: 35px;
+        height: 35px;
+      }
+      .toggle-password {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+      }
+
+      /* 옵션 */
+      .options-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+      }
+
+      /* 파란 로그인 버튼 */
+      .login-btn {
+        background-color: #3f51b5; /* 파란색 */
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-size: 1em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .signup-modal {
+        width: 400px;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .input-box {
+        display: flex;
+        align-items: center;
+        background: #eee;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px 0;
+        position: relative;
+      }
+
+      .input-box input {
+        border: none;
+        background: transparent;
+        flex: 1;
+        padding-left: 10px;
+        font-size: 1em;
+      }
+
+      .input-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .signup-btn {
+        background-color: #5c6bc0;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        width: 100%;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      .error-message {
+        font-size: 12px;
+        color: red;
+        margin-top: 5px;
+        display: block;
+      }
+    </style>
+    <div
+      class="logo"
+      style="font-family: 'Georgia', serif; font-weight: bold; font-size: 1.5em"
+    >
+      <a href="{% url 'main' %}" style="text-decoration: none; color: inherit"
+        >Give Time</a
+      >
+    </div>
+  </div>
+  <div class="nav-center">
+    <nav>
+      <a href="{% url 'announcement_list' %}">공지사항</a>
+      <a href="{% url 'donation_list' %}">재능기부</a>
+      <a href="{% url 'request_list' %}">재능요청</a>
+      <a href="{% url 'story_list' %}">따뜻한 이야기</a>
+    </nav>
+  </div>
+  <div class="nav-right">
+    <nav>
+      {% if user.is_authenticated %}
+      <a href="{% url 'account:logout' %}">로그아웃</a>
+      {% else %}
+      <a href="#" onclick="openLoginModal()">
+        <span style="font-size: 1.2em; margin-right: 4px">👜</span>로그인
+      </a>
+      {% endif %}
+      <a href="#" onclick="openSignupModal()"
+        ><span style="font-size: 1.2em">⭐</span> 회원가입</a
+      >
+      <!-- 나중에 링크 수정 필요함 -->
+      <a href="{% url 'mypage:my_page' %}"
+        ><span style="font-size: 1.2em">⭐</span> 마이페이지</a
+      >
+      <!-- 일단은 연결만 해둠. -->
+    </nav>
+  </div>
+</header>
+
+<!-- 로그인 모달 -->
+<div id="loginModal" class="modal-overlay" style="display: none">
+  <div class="login-modal">
+    <form method="post" action="{% url 'account:login' %}">
+      {% csrf_token %}
+      <div class="welcome-header">
+        <img
+          src="{% static 'main/images/givetime.png' %}"
+          alt="GiveTime"
+          class="logo-img"
+        />
+        <div class="welcome-text">
+          <div class="brand-name">GIVE TIME 에 오신 것을</div>
+          <span class="highlight">환영합니다!</span>
+        </div>
+      </div>
+
+      <button type="button" class="google-btn">
+        <img
+          src="{% static 'main/images/google.png' %}"
+          class="google-icon"
+          alt="Google"
+        />
+        구글계정으로 로그인하기
+      </button>
+
+      <div class="divider">OR</div>
+
+      <div class="input-box">
+        <img src="{% static 'main/images/message.png' %}" class="input-icon" />
+        <input
+          type="email"
+          name="username"
+          placeholder="example@gmail.com"
+          required
+        />
+      </div>
+
+      <div class="input-box">
+        <img src="{% static 'main/images/key.png' %}" class="input-icon" />
+        <input
+          type="password"
+          name="password"
+          id="loginPassword"
+          placeholder="비밀번호 입력"
+          required
+        />
+        <button
+          type="button"
+          class="toggle-password"
+          onclick="togglePassword('loginPassword')"
+        >
+          👁️
+        </button>
+      </div>
+
+      <div class="options-row">
+        <label><input type="checkbox" /> 사용자 이름 기억</label>
+        <a href="#">비밀번호를 잊어버리셨나요?</a>
+      </div>
+
+      <button type="submit" class="login-btn">로그인</button>
+      <p class="signup-text">
+        계정이 없으신가요?
+        <a
+          href="#"
+          onclick="closeLoginModal(); openSignupModal(); return false;"
+          >회원가입</a
+        >
+      </p>
+
+      <button type="button" onclick="closeLoginModal()" class="close-btn">
+        X
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- 회원가입 모달 -->
+<div id="signupModal" class="modal-overlay" style="display: none">
+  <div class="signup-modal">
+    <form id="signupForm" method="post" action="{% url 'account:signup' %}">
+      {% csrf_token %}
+      <button type="button" onclick="closeSignupModal()" class="close-btn">
+        X
+      </button>
+
+      <div class="input-box">
+        <input type="email" name="email" placeholder="이메일" required />
+        <span class="error-message"></span>
+      </div>
+
+      <div class="input-box">
+        <input type="text" name="nickname" placeholder="닉네임" required />
+        <span class="error-message"></span>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          name="password1"
+          id="signupPassword"
+          placeholder="비밀번호"
+          required
+        />
+        <button type="button" onclick="togglePassword('signupPassword')">
+          👁️
+        </button>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          name="password2"
+          id="confirmPassword"
+          placeholder="비밀번호 확인"
+          required
+        />
+        <button type="button" onclick="togglePassword('confirmPassword')">
+          👁️
+        </button>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="input-box">
+        <input type="text" name="location" placeholder="거주지" required />
+        <span class="error-message"></span>
+      </div>
+
+      <button type="submit" class="signup-btn">회원가입</button>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'main/main.js' %}"></script>

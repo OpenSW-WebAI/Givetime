@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>프로필 수정 | Give Time</title>
+    <link rel="stylesheet" href="{% static 'mypage/mypage.css' %}">
+</head>
+<body>
+
+    <div id="header">{% include 'main/header.html' %}</div>
+
+    <main class="profile-card">
+        <h1>프로필 수정</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="about">About</label><br>
+            <textarea name="about" id="about" rows="5">{{ about }}</textarea><br><br>
+
+            <label for="skills">Skills</label><br>
+            <textarea name="skills" id="skills" rows="5">{{ skillls }}</textarea><br><br>
+
+            <label for="services">services</label><br>
+            <textarea name="services" id="services" rows="5">{{ services }}</textarea><br><br>
+
+            <button type="submit">저장</button>
+        </form>
+    </main>
+
+    <div id="footer">{% include 'main/footer.html' %}</div>
+</body>
+</html>

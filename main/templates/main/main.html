@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiveTime - 재능 기부 플랫폼</title>
+    <link rel="stylesheet" href="{% static 'main/main.css' %}" />
+    <script src="{% static 'main/layout.js' %}" defer></script>
+    <script src="{% static 'main/main.js' %}"></script>
+  </head>
+  <body>
+    <div id="header">{% include 'main/header.html' %}</div>
+
+    <div class="main-banner">
+      <div class="slide-wrapper" id="slideWrapper">
+        <div class="slide">
+          <div class="text">
+            <h1>재능 기부 플랫폼</h1>
+            <p>
+              당신의 시간, 능력이 모이면 힘이 됩니다.<br />GiveTime은 시간으로
+              마음을 나누는 재능 기부 플랫폼입니다.
+            </p>
+            <p>✔️ 전문 / 시간 선택 가능</p>
+          </div>
+          <div class="image">
+            <img src="{% static 'main/images/givetalent.png' %}" alt="재능기부 이미지" />
+          </div>
+        </div>
+        <div class="slide">
+          <div class="text">
+            <h1>함께 만드는 따뜻한 세상</h1>
+            <p>
+              여러분의 작은 나눔이 큰 변화를 만듭니다.<br />함께 나누는 삶을
+              GiveTime에서 시작하세요.
+            </p>
+            <p>✔️ 누구나 쉽게 참여 가능</p>
+          </div>
+          <div class="image">
+            <img src="{% static 'main/images/warm-world.png' %}" alt="함께 기부 이미지" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">모집중인 재능기부</div>
+      <p class="section-subtitle">당신의 재능을 세상과 나눠보세요</p>
+      <div class="card-list">
+        {% for post in donation_posts %}
+        <div class="card">
+          <div class="card-top">
+            <div class="category-info">
+              <div class="category-name">{{ post.category }}</div>
+              <div class="category-location">{{ post.author.username }}</div>
+            </div>
+          </div>
+          <div class="card-body1">
+            <div class="title">{{ post.title }}</div>
+            <div>작성일: {{ post.created_at|date:"Y-m-d H:i" }}</div>
+            <div class="detail-link">
+              <a href="/posts/donation/{{ post.id }}/">상세보기</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>등록된 재능기부 게시물이 없습니다.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="warm-section">
+      <div class="section-title">따뜻한 이야기</div>
+      <p class="section-subtitle">
+        작지만 깊은 나눔이 만들어낸 순간들을 담았어요
+      </p>
+      <div class="card-list">
+        {% for post in story_posts %}
+        <div class="card">
+          <div class="card-top">
+            <div class="category-info">
+              <div class="category-name">{{ post.category }}</div>
+              <div class="category-location">{{ post.author.username }}</div>
+            </div>
+          </div>
+          <div class="card-body2">
+            <div class="title">{{ post.title }}</div>
+            <div>작성일: {{ post.created_at|date:"Y-m-d H:i" }}</div>
+            <div class="detail-link">
+              <a href="/posts/story/{{ post.id }}/">상세보기</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>등록된 따뜻한 이야기 게시물이 없습니다.</p>
+        {% endfor %}
+      </div>
+    </section>
+    {% include 'main/footer.html' %}
+  </body>
+</html>

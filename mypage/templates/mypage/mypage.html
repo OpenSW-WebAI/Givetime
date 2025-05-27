@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지 | Give Time</title>
+    <link rel="stylesheet" href="{% static 'mypage/mypage.css' %}">
+</head>
+<body>
+
+    <div id="header">{% include 'main/header.html' %}</div>
+
+    <main class="profile-card">
+        <div class="profile-header">
+            <img src="{% static 'images/profile.jpg' %}" alt="프로필 이미지" class="profile-img" id="profile-img">
+        </div>
+
+        <div class="profile-info">
+            <h2>{{ nickname }}</h2>
+            <p>이메일: {{ email }}</p>
+            <p>지역: {{ location }}</p>
+            <div class="badges">
+                <span class="badge">활동회원</span>
+            </div>
+        </div>
+
+        <section class="about-section">
+            <h3>About</h3>
+            <p class="about-text">{{ about }}</p>
+        </section>
+
+        <section class="skills-box">
+            <h3>주요 기술 및 역량</h3>
+            <p class="about-text">{{ skills }}</p>
+        </section>
+
+        <section class="services-section">
+            <h3>Services</h3>
+            <p class="about-text">{{ services }}</p>
+            <button>Request services</button>
+        </section>
+    <a href="{% url 'mypage:edit_profile' %}">프로필 수정</a>
+    </main>
+
+    <div id="footer">{% include 'main/footer.html' %}</div>
+
+</body>
+</html>

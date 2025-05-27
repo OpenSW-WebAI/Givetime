@@ -1,0 +1,85 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재능 기부</title>
+
+    <link rel="stylesheet" href="{% static 'posts/board.css' %}" />
+    <script src="{% static 'main/layout.js' %}" defer></script>
+
+  </head>
+  <body>
+    <div id="header">{% include 'main/header.html' %}</div>
+
+    <div class="container">
+      <div class="main">
+        <h1>재능 기부</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="검색어를 입력하세요..." />
+          <button>검색</button>
+        </div>
+
+        {% for post in page_obj %}
+        <div class="card">
+          <a href="{% url 'donation_detail' post.id %}">
+            <div class="card-title">{{ post.title }}</div>
+          </a>
+          <div class="card-meta">
+            <div class="card-sub">작성자: {{ post.author.username }}</div>
+            <span class="date">{{ post.created_at|date:"Y-m-d" }}</span>
+            <span>조회수: {{ post.views }}</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>등록된 게시글이 없습니다.</p>
+        {% endfor %}
+
+        <a href="/posts/story/create/" class="create-btn">글 작성</a>
+        <!-- 페이지네이션, 인기글 기능 추가 필요 -->
+
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+          {% endif %} 
+          
+          {% for num in page_obj.paginator.page_range %} 
+            {% if page_obj.number == num %}
+              <span class="active">{{ num }}</span>
+            {% else %}
+              <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %} 
+          {% endfor %} 
+          
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">다음</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-title">📊 인기글(조회수 기반)</div>
+
+        {% for post in popular_posts %}
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">
+            <a href="{% url 'donation_detail' post.id %}">{{ post.title }}</a>
+          </div>
+          <div class="sidebar-card-meta">
+            <div class="author-info">
+              <span class="author">{{ post.author.username }}</span>
+            </div>
+            <span class="date">{{ post.created_at|date:"Y-m-d" }}</span>
+            <span>조회수: {{ post.views }}</span>
+          </div>
+        </div>
+        {% empty %}
+        <p>인기글이 없습니다.</p>
+        {% endfor %}
+      </aside>
+    </div>
+
+    <div id="footer">{% include 'main/footer.html' %}</div>
+  </body>
+</html>
